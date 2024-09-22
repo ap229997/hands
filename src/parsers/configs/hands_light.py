@@ -1,0 +1,29 @@
+from src.parsers.configs.generic import DEFAULT_ARGS_EGO
+
+DEFAULT_ARGS_EGO["batch_size"] = 32
+DEFAULT_ARGS_EGO["test_batch_size"] = 32
+DEFAULT_ARGS_EGO["num_workers"] = 8
+DEFAULT_ARGS_EGO["use_gt_bbox"] = True # predicted bbox not supported in this version
+DEFAULT_ARGS_EGO["separate_hands"] = False # use different encoders for left and right hands
+DEFAULT_ARGS_EGO["pos_enc"] = 'center+corner_latent' # None, 'pcl, 'perspective_correction', 'center+corner_latent', 'dense', 'center+corner', 'dense_latent', 'cam_conv', 'sinusoidal_cc'
+DEFAULT_ARGS_EGO["n_freq_pos_enc"] = 4 # number of frequencies for positional encoding
+DEFAULT_ARGS_EGO["img_res"] = 224
+DEFAULT_ARGS_EGO["img_res_ds"] = 224 # keep this same as img_res for simplicity
+DEFAULT_ARGS_EGO["logger"] = 'tensorboard'
+DEFAULT_ARGS_EGO['backbone'] = 'resnet50' # 'vit_b_16', 'resnet50', 'resnet18'
+DEFAULT_ARGS_EGO['vis_every'] = 100 # this only works in debug mode
+DEFAULT_ARGS_EGO['log_every'] = 50
+DEFAULT_ARGS_EGO['regress_center_corner'] = False # if the model predicts center and corner points of the crop
+DEFAULT_ARGS_EGO['flip_prob'] = 0.0 # verify flip augmentation
+DEFAULT_ARGS_EGO['dataset'] = 'hands+assembly+epic_grasp+epic_seg' # hands+assembly+h2o+egoexo+epic_grasp+epic_seg+epic+depth+ego_grasp+ego_seg
+DEFAULT_ARGS_EGO['val_dataset'] = 'epic' # validation dataset
+DEFAULT_ARGS_EGO['tf_decoder'] = False # transformer architecture for decoder
+DEFAULT_ARGS_EGO['use_glb_feat'] = True # using global image features along with crop inputs, helps for all models
+DEFAULT_ARGS_EGO['use_grasp_loss'] = True # has to be True with epic_grasp or ego_grasp dataset
+DEFAULT_ARGS_EGO['use_glb_feat_w_grasp'] = True # whether to use global image features with grasp loss or just the hand pose, trend is not clear
+DEFAULT_ARGS_EGO['use_render_seg_loss'] = True # mask loss
+DEFAULT_ARGS_EGO['use_gt_hand_mask'] = False # use ground truth hand mask (if available) or predicted from off-the-shelf model, latter is used
+DEFAULT_ARGS_EGO['use_depth_loss'] = False # this requires pseudo GT depth from ZoeDepth model, only use after generating the depth maps
+DEFAULT_ARGS_EGO['no_crops'] = False # use full image instead of crops
+DEFAULT_ARGS_EGO['eval_every_epoch'] = 1
+DEFAULT_ARGS_EGO['no_intrx'] = False # use a sinuoidal encoding of normalized crop location w.r.t image center when intrx are not available, only for Ego4D dataset

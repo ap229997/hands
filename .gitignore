@@ -1,0 +1,8 @@
+*.vscode
+*.DS_Store
+*__pycache__*
+logs/*
+viz/*
+output/*
+externals/*
+*._*
