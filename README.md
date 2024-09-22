@@ -1,6 +1,6 @@
 # 3D Hand Pose Estimation in Everyday Egocentric Images
 
-## [Project Page](https://ap229997.github.io/projects/hands/) | [Paper](https://ap229997.github.io/projects/hands/assets/paper.pdf) | [Supplementary](https://ap229997.github.io/projects/hands/assets/suppmat.pdf) | [Video](https://youtu.be/YolFnTtq38E) | [Poster](https://ap229997.github.io/projects/hands/hands/poster.pdf)
+## [Project Page](https://ap229997.github.io/projects/hands/) | [Paper](https://ap229997.github.io/projects/hands/assets/paper.pdf) | [Supplementary](https://ap229997.github.io/projects/hands/assets/suppmat.pdf) | [Video](https://youtu.be/YolFnTtq38E) | [Poster](https://ap229997.github.io/projects/hands/poster.pdf)
 
 <img src="assets/overview.png" height="192" hspace=30>
 
@@ -65,6 +65,10 @@ CUDA_VISIBLE_DEVICES=<gpu_ids> python scripts_method/train.py --method {arctic,h
 
 ArcticNet and WildHands are initialized from the ArcticNet model trained on allocentric split of ARCTIC (this can be downloaded from [here](https://github.com/zc-alexfan/arctic/blob/master/docs/data/README.md)). HandOccNet is initialized from pretrained FPN weights (availble in torch model zoo). HaMeR is initialized from the checkpoints provided in their repo.
 
+## License
+
+All the material here is released under the Creative Commons Attribution-NonCommerial 4.0 International License, found [here](https://creativecommons.org/licenses/by-nc/4.0/). For all the datasets used in this work, refer to the respective websites for citation and license details.
+
 
 ## Acknowledgements
 
@@ -76,4 +80,4 @@ This codebase is build on top of several awesome repositories:
 - [IHOI](https://github.com/JudyYe/ihoi)
 - [MANO](https://github.com/otaheri/MANO)
 
-We also thank all the authors of the datasets used in our work for making them publicly available. Check out their works as well. Refer to the respective websites for citation and license details.
+We also thank all the authors of the datasets used in our work for making them publicly available. Check out their works as well.
