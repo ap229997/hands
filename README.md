@@ -67,7 +67,7 @@ ArcticNet and WildHands are initialized from the ArcticNet model trained on allo
 
 ## License
 
-All the material here is released under the Creative Commons Attribution-NonCommerial 4.0 International License, found [here](https://creativecommons.org/licenses/by-nc/4.0/). For all the datasets used in this work, refer to the respective websites for citation and license details.
+All the material here is released under the Creative Commons Attribution-NonCommerial 4.0 International License, found [here](https://creativecommons.org/licenses/by-nc/4.0/). For all the datasets and codebase (below) used in this work, refer to the respective websites/repos for citation and license details.
 
 
 ## Acknowledgements

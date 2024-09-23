@@ -10,7 +10,6 @@ DEFAULT_ARGS_EGO["pos_enc"] = 'center+corner_latent'
 DEFAULT_ARGS_EGO["img_res"] = 224
 DEFAULT_ARGS_EGO["img_res_ds"] = 224
 DEFAULT_ARGS_EGO["logger"] = 'tensorboard'
-DEFAULT_ARGS_EGO['backbone'] = 'resnet50' # 'vit_b_16', 'resnet50', 'resnet18'
 DEFAULT_ARGS_EGO['vis_every'] = 100 # this only works in debug mode
 DEFAULT_ARGS_EGO['log_every'] = 50
 DEFAULT_ARGS_EGO['regress_center_corner'] = False
