@@ -14,6 +14,10 @@ This repository contains the code for the ECCV 2024 paper [3D Hand Pose Estimati
 }
 ```
 
+## Demo
+
+We provide a demo script for estimating hand poses from a single image using both [HaMeR](https://arxiv.org/abs/2312.05251) and [WildHands](https://arxiv.org/abs/2312.06583) models. The detailed instructions are provide in the [demo](https://github.com/ap229997/hands/tree/demo) branch.
+
 ## Setup
 
 Follow the instructions in the [ARCTIC](https://github.com/zc-alexfan/arctic/blob/master/docs/setup.md) repo to setup the environment.
