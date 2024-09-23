@@ -1,6 +1,6 @@
 # 3D Hand Pose Estimation in Everyday Egocentric Images
 
-## [Project Page](https://ap229997.github.io/projects/hands/) | [Paper](https://ap229997.github.io/projects/hands/assets/paper.pdf) | [Supplementary](https://ap229997.github.io/projects/hands/assets/suppmat.pdf) | [Video](https://youtu.be/YolFnTtq38E) | [Poster](https://ap229997.github.io/projects/hands/poster.pdf)
+## [Project Page](https://ap229997.github.io/projects/hands/) | [Paper](https://ap229997.github.io/projects/hands/assets/paper.pdf) | [Supplementary](https://ap229997.github.io/projects/hands/assets/suppmat.pdf) | [Video](https://youtu.be/YolFnTtq38E) | [Poster](https://ap229997.github.io/projects/hands/assets/poster.pdf)
 
 <img src="assets/overview.png" height="192" hspace=30>
 
