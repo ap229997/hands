@@ -2,6 +2,8 @@
 
 This repo contains demo for hand pose estimation using [HaMeR](https://arxiv.org/abs/2312.05251) and [WildHands](https://ap229997.github.io/projects/hands/assets/paper.pdf) models. Note that hand crops are obtained from [ViTPose](https://github.com/ViTAE-Transformer/ViTPose) predictions which are not always accurate and currently the code does not handle the erroneous cases.
 
+For ViTPose checkpoint, download `wholebody.pth` from [here](https://drive.google.com/drive/folders/1vjqBPicZagi0Xx0c_ItzAlISaj-pCigG) and put under `downloads/_DATA/vitpose_ckpts/vitpose+_huge/`.
+
 ## Installation
 Clone the repo:
 ```
