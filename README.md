@@ -67,11 +67,11 @@ This code supports multiple models - [ArcticNet](https://download.is.tue.mpg.de/
 CUDA_VISIBLE_DEVICES=<gpu_ids> python scripts_method/train.py --method {arctic,hands,handoccnet,hamer}_light --trainsplit train --valsplit smallval --load_ckpt <pretrained_weights_for_initialization>
 ```
 
-ArcticNet and WildHands are initialized from the ArcticNet model trained on allocentric split of ARCTIC (this can be downloaded from [here](https://github.com/zc-alexfan/arctic/blob/master/docs/data/README.md)). HandOccNet is initialized from pretrained FPN weights (availble in torch model zoo). HaMeR is initialized from the checkpoints provided in their repo.
+ArcticNet and WildHands are initialized from the ArcticNet model trained on allocentric split of ARCTIC (this can be downloaded from [here](https://github.com/zc-alexfan/arctic/blob/master/docs/data/README.md)). HandOccNet is initialized from pretrained FPN weights (available in torch model zoo). HaMeR is initialized from the checkpoints provided in their repo.
 
 ## License
 
-All the material here is released under the Creative Commons Attribution-NonCommerial 4.0 International License, found [here](https://creativecommons.org/licenses/by-nc/4.0/). For all the datasets and codebase (below) used in this work, refer to the respective websites/repos for citation and license details.
+All the material here is released under the Creative Commons Attribution-NonCommercial 4.0 International License, found [here](https://creativecommons.org/licenses/by-nc/4.0/). For all the datasets and codebase (below) used in this work, refer to the respective websites/repos for citation and license details.
 
 
 ## Acknowledgements
