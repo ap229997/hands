@@ -29,6 +29,7 @@ class WildHandsDataset(Dataset):
         self.focal_length = focal_length
         self.personid = np.arange(len(boxes), dtype=np.int32)
         self.right = right.astype(np.float32)
+        self.intrx = kwargs.get('intrx', None)
 
     def __len__(self):
         return len(self.personid)
@@ -106,13 +107,18 @@ class WildHandsDataset(Dataset):
         # scale and center in the original image space
         scale_original = max([image_size["width"], image_size["height"]]) / 200.0
         center_original = [image_size["width"] / 2.0, image_size["height"] / 2.0]
-        intrx = np.zeros((3, 3)) # dummy intrinsic value, default focal length = 1000
         fixed_focal_length = self.focal_length * (args.img_res / max(image_size["width"], image_size["height"]))
+        if self.intrx is None:
+            intrx = np.zeros((3, 3)) # dummy intrinsic value, default focal length = 1000
+            use_gt_k = False # uses intrx centered at patch 
+        else:
+            intrx = self.intrx.copy()
+            use_gt_k = True
         intrx = data_utils.get_aug_intrix(
             intrx,
             fixed_focal_length,
             args.img_res,
-            False,
+            use_gt_k,
             center_original[0],
             center_original[1],
             augm_dict["sc"] * scale_original,

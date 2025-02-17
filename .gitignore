@@ -6,6 +6,8 @@ out*
 viz*
 externals*
 logs*
+third-party/ViTPose*
+example_data/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

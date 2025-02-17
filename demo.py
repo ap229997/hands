@@ -4,6 +4,7 @@ import argparse
 import os
 import cv2
 import numpy as np
+from tqdm import tqdm
 import pickle
 
 from hamer.models import load_hamer
@@ -32,6 +33,7 @@ def main():
     parser.add_argument('--file_type', nargs='+', default=['*.jpg', '*.png'], help='List of file extensions to consider')
     parser.add_argument('--render_res', type=int, default=840, help='Resolution for rendering')
     parser.add_argument('--focal_length', type=float, default=1000, help='Camera focal length corresponding to the input image')
+    parser.add_argument('--principal', nargs='+', default=[-1, -1], help='Camera principal point corresponding to the input image')
     args = parser.parse_args()
     
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -91,7 +93,7 @@ def main():
     img_paths = sorted([img for end in args.file_type for img in Path(args.img_folder).glob(end)])
 
     # Iterate over all images in folder
-    for img_path in img_paths:
+    for img_path in tqdm(img_paths):
 
         # square images are convenient since different models have different input sizes
         cv_img = cv2.cvtColor(cv2.imread(str(img_path)), cv2.COLOR_BGR2RGB)
@@ -99,6 +101,24 @@ def main():
         image = data_utils.generate_patch_image_clean(cv_img, [cv_img.shape[1]/2, cv_img.shape[0]/2, input_res, input_res], 1.0, 0.0, [args.render_res, args.render_res], cv2.INTER_CUBIC)[0]
         img = image.clip(0, 255)
         img_cv2 = img.astype(np.uint8)[..., ::-1]
+
+        intrx = None
+        if args.wildhands_ckpt is not None:
+            # WildHands requires principal point
+            px, py = args.principal
+            if px == -1 and py == -1:
+                px = cv_img.shape[1] / 2
+                py = cv_img.shape[0] / 2
+            intrx = np.array([[args.focal_length, 0, px], [0, args.focal_length, py], [0, 0, 1]])
+
+            # transform intrx as per padded image
+            scale = args.render_res / input_res
+            px = px - (cv_img.shape[1] - input_res) / 2
+            py = py - (cv_img.shape[0] - input_res) / 2
+            intrx[0, 2] = px * scale
+            intrx[1, 2] = py * scale
+            intrx[0, 0] *= scale
+            intrx[1, 1] *= scale
 
         # Detect humans in image
         det_out = detector(img_cv2)
@@ -148,7 +168,7 @@ def main():
             dataset = ViTDetDataset(cfg, img_cv2, boxes, right, rescale_factor=2.0)
             dataloader = torch.utils.data.DataLoader(dataset, batch_size=8, shuffle=False, num_workers=0)
         elif args.wildhands_ckpt is not None:
-            dataset = WildHandsDataset(cfg, img, boxes, right, focal_length=scaled_focal_length, rescale_factor=1.75)
+            dataset = WildHandsDataset(cfg, img, boxes, right, focal_length=scaled_focal_length, rescale_factor=1.75, intrx=intrx)
             dataloader = torch.utils.data.DataLoader(dataset, batch_size=8, shuffle=False, num_workers=0)
 
         all_verts = []
